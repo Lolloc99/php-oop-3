@@ -22,8 +22,9 @@ $collare = new Accessory("Accessorio", "A001", "Cane", "Pelle", "14.30", "dispon
 $guinzaglio = new Accessory("Accessorio", "A002", "Cane", "Cuoio", "21.90", "disponibile");
 
 // ACQUISTI UTENTI 
-$giulia = new User("Giulia", "giulia@gmail.com", "false", "false");
 
+// Giulia
+$giulia = new User("Giulia", "giulia@gmail.com", "false", "false", "Città1", "Comune1");
 
 try {
     $giulia ->addProductToCart($scatoletta_carne);
@@ -43,7 +44,8 @@ try {
     echo "<br> Attenzione: " . $e->getMessage() . "<br>";
 }
 
-$arianna = new User("Arianna", "arianna@gmail.com", "true", "true");
+// Arianna
+$arianna = new User("Arianna", "arianna@gmail.com", "true", "true", "Città2", "Comune2");
 try {
     $arianna ->addProductToCart($crocchette);
 } catch (Exception $e){

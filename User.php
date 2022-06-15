@@ -1,6 +1,8 @@
 <?php
+require_once __DIR__ ."/Address.php";
 
 class User {
+    use Address;
 
     public $name;
     public $email;
@@ -8,11 +10,13 @@ class User {
     public $registered;
     public $cart = [];
 
-    function __construct($_name, $_email, $_credit_card, $_registered) {
+    function __construct($_name, $_email, $_credit_card, $_registered, $_city, $_municipality) {
         $this->name = $_name;
         $this->email = $_email;
         $this->credit_card = $_credit_card;
         $this->registered = $_registered;
+        $this->city = $_city;
+        $this->municipality = $_municipality;
     }
 
     function addProductToCart($_product) {
