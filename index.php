@@ -12,25 +12,55 @@ require_once __DIR__ . "/User.php";
 
 // PRODOTTI
 // Cibo
-$crocchette = new Food("Cibo", "F001", "gatto", "20/12/2022", "5.90");
-$scatoletta_carne = new Food("Cibo", "F002", "cane", "14/07/2022", "3.90");
+$crocchette = new Food("Cibo", "F001", "gatto", "20/12/2022", "5.90", "concluso");
+$scatoletta_carne = new Food("Cibo", "F002", "cane", "14/07/2022", "3.90", "disponibile");
 // Giocattoli
-$palla = new Game("Giocattolo", "G001", "Piccola", "Gomma", "13.50");
-$pollo = new Game("Giocattolo", "G002", "Media", "Gomma", "8.50");
+$palla = new Game("Giocattolo", "G001", "Piccola", "Gomma", "13.50", "disponibile");
+$pollo = new Game("Giocattolo", "G002", "Media", "Gomma", "8.50", "concluso");
 // Accessori
-$collare = new Accessory("Accessorio", "A001", "Cane", "Pelle", "14.30");
-$guinzaglio = new Accessory("Accessorio", "A002", "Cane", "Cuoio", "21.90");
+$collare = new Accessory("Accessorio", "A001", "Cane", "Pelle", "14.30", "disponibile");
+$guinzaglio = new Accessory("Accessorio", "A002", "Cane", "Cuoio", "21.90", "disponibile");
 
 // ACQUISTI UTENTI 
 $giulia = new User("Giulia", "giulia@gmail.com", "false", "false");
-$giulia ->addProductToCart($scatoletta_carne);
-$giulia ->addProductToCart($collare);
-$giulia ->addProductToCart($pollo);
+
+
+try {
+    $giulia ->addProductToCart($scatoletta_carne);
+} catch (Exception $e){
+    echo "<br> Attenzione: " . $e->getMessage() . "<br>";
+}
+
+try {
+    $giulia ->addProductToCart($collare);
+} catch (Exception $e){
+    echo "<br> Attenzione: " . $e->getMessage() . "<br>";
+}
+
+try {
+    $giulia ->addProductToCart($pollo);
+} catch (Exception $e){
+    echo "<br> Attenzione: " . $e->getMessage() . "<br>";
+}
 
 $arianna = new User("Arianna", "arianna@gmail.com", "true", "true");
-$arianna ->addProductToCart($crocchette);
-$arianna ->addProductToCart($palla);
-$arianna ->addProductToCart($palla);
+try {
+    $arianna ->addProductToCart($crocchette);
+} catch (Exception $e){
+    echo "<br> Attenzione: " . $e->getMessage() . "<br>";
+}
+
+try {
+    $arianna ->addProductToCart($palla);
+} catch (Exception $e){
+    echo "<br> Attenzione: " . $e->getMessage() . "<br>";
+}
+
+try {
+    $arianna ->addProductToCart($palla);
+} catch (Exception $e){
+    echo "<br> Attenzione: " . $e->getMessage() . "<br>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -45,14 +75,9 @@ $arianna ->addProductToCart($palla);
 </head>
 <body>
     <!-- 
-        Oggi pomeriggio provate ad immaginare quali sono le classi necessarie per creare uno shop online con le seguenti caratteristiche.
-        L'e-commerce vende prodotti per gli animali
-        I prodotti saranno oltre al cibo, anche giochi, cucce, etc.
-        L'utente potrà sia comprare i prodotti senza registrarsi, oppure iscriversi e ricevere il 20% di sconto su tutti i prodotti.
-        Il pagamento avviene con la carta di credito, che non deve essere scaduta.
-
-        BONUS:
-        Alcuni prodotti (es. antipulci) avranno la caratteristica che saranno disponibili solo in un periodo particolare (es. da maggio ad agosto).
+        Oggi pomeriggio dovete aggiungere nel vostro e-commerce di prodotti per gli animali le nuove funzionalità visti oggi a lezione:
+        - almeno una trait;
+        - almeno un'eccezione.
     -->
 
     <h2>Prodotti disponibili</h2>

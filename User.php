@@ -16,7 +16,11 @@ class User {
     }
 
     function addProductToCart($_product) {
-        $this->cart[] = $_product;
+        if ($_product->availability === "disponibile") {
+            $this->cart[] = $_product;
+        } else {
+            throw new Exception("Prodotto non disponibile!");
+        }
     }
 
     function checkCreditCard($_cdc) {
